@@ -1,7 +1,11 @@
 package ui
 
+// import (
+// 	"github.com/charmbracelet/lipgloss"
+// )
 func (m Model) View() string {
-    s := "Initial View"
 
-    return s
+    topPane := m.ServersPane.View()
+
+    return topPane 
 }

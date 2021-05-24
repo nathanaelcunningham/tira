@@ -2,12 +2,14 @@ package app
 
 import (
 	"log"
-    "os"
+	"os"
 
 	tea "github.com/charmbracelet/bubbletea"
+	"github.com/nathanaelcunningham/tira/config"
 	"github.com/nathanaelcunningham/tira/ui"
 ) 
 func Run() {
+    config.LoadConfig()
 
     m := ui.NewModel()
     p := tea.NewProgram(m)
