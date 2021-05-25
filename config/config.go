@@ -11,6 +11,7 @@ import (
 
 type Config struct {
 	User UserConfig `mapstructure:"user"`
+    Server string `mapstructure:"server"`
 }
 
 type UserConfig struct {
@@ -18,6 +19,17 @@ type UserConfig struct {
 	Token    string `mapstructure:"token"`
 }
 
+func CheckConfig() bool {
+    home, _ := os.UserHomeDir()
+    configPath := filepath.Join(home, ".config", "tira")
+    configFile := filepath.Join(configPath, "tira_config.json")
+
+    if _, err := os.Stat(configFile); os.IsNotExist(err) {
+        return false
+    }
+
+    return true
+}
 func LoadConfig() {
     home, _ := os.UserHomeDir()
     configPath := filepath.Join(home, ".config", "tira")
